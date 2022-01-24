@@ -16,6 +16,7 @@ class CreateInmueblesTable extends Migration
         Schema::create('inmuebles', function (Blueprint $table) {
             $table->id();
             $table->enum('tipo', ['Arriendo', 'Venta']);
+            $table->double('costo');
             $table->smallInteger('numeroPisos');
             $table->integer('metrosCuadrados');
             $table->foreignId('barrio_id');
@@ -24,6 +25,7 @@ class CreateInmueblesTable extends Migration
             $table->smallInteger('numeroBanios');
             $table->boolean('tieneSalaComedor');
             $table->boolean('tieneGaraje');
+            $table->boolean('estaActivo');
             $table->timestamps();
             $table->foreign('barrio_id')->references('id')->on('barrios');
         });

@@ -15,6 +15,7 @@ class InmuebleFactory extends Factory
     {
         return [
             'tipo' => $this->faker->randomElement(['Arriendo', 'Venta']),
+            'costo' => $this->faker->numberBetween(1000, 850000),
             'numeroPisos' => $this->faker->numberBetween(1, 3),
             'metrosCuadrados' => $this->faker->numberBetween(40, 300),
             'direccion' => $this->faker->streetAddress,
@@ -22,7 +23,8 @@ class InmuebleFactory extends Factory
             'numeroBanios' => $this->faker->numberBetween(1, 2),
             'tieneSalaComedor' => $this->faker->boolean,
             'tieneGaraje' => $this->faker->boolean,
-            'barrio_id' => $this->faker->numberBetween(1, 50)
+            'estaActivo' => $this->faker->boolean,
+            'barrio_id' => $this->faker->numberBetween(1, 50),
         ];
     }
 }
