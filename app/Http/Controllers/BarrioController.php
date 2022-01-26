@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inmueble;
+use App\Models\Barrio;
 use Illuminate\Http\Request;
 
-class InmuebleController extends Controller
+class BarrioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,10 @@ class InmuebleController extends Controller
      */
     public function index()
     {
-        $inmuebles = Inmueble::paginate(9);
-        return $inmuebles;
+        $barrios = Barrio::all();
+        return response()->json([
+            'barrios' => $barrios
+        ]);
     }
 
     /**
@@ -47,10 +49,7 @@ class InmuebleController extends Controller
      */
     public function show($id)
     {
-        $inmueble = Inmueble::find($id);
-        return response()->json([
-            'inmueble' => $inmueble
-        ]);
+        //
     }
 
     /**

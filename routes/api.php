@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarrioController;
 use App\Http\Controllers\InmuebleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/inmuebles/all', [InmuebleController::class, 'index']);
+Route::get('/inmuebles/{id}', [InmuebleController::class, 'show']);
+Route::get('/barrios/all', [BarrioController::class, 'index']);
