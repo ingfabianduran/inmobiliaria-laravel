@@ -19,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/inmuebles/all', [InmuebleController::class, 'index']);
 Route::get('/inmuebles/{id}', [InmuebleController::class, 'show']);
 Route::post('/inmuebles/add', [InmuebleController::class, 'store']);
+Route::put('/inmuebles/{id}', [InmuebleController::class, 'update']);
 Route::get('/barrios/all', [BarrioController::class, 'index']);

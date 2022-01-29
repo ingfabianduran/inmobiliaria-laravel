@@ -75,7 +75,12 @@ class InmuebleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inmueble = Inmueble::find($id);
+        $inmueble->update($request->all());
+        return response()->json([
+            'inmueble' => $inmueble,
+            'message' => 'Inmueble Actualizado Correctamente'
+        ]);
     }
 
     /**

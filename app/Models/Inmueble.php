@@ -14,6 +14,20 @@ class Inmueble extends Model
         'barrio'
     ];
 
+    protected $fillable = [
+        'tipo',
+        'costo',
+        'numeroPisos',
+        'metrosCuadrados',
+        'barrio_id',
+        'direccion',
+        'numeroHabitaciones',
+        'numeroBanios',
+        'tieneSalaComedor',
+        'tieneGaraje',
+        'estaActivo'
+    ];
+
     public function barrio() {
         return $this->belongsTo(Barrio::class);
     }
