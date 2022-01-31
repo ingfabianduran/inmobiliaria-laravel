@@ -37,8 +37,12 @@ class InmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        $response = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
-        dd($response);
+        // $response = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
+        $inmueble = Inmueble::create($request->all());
+        return response()->json([
+            'inmueble' => $inmueble,
+            'message' => 'Inmueble Creado Correctamente'
+        ]);
     }
 
     /**
