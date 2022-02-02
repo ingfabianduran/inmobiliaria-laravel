@@ -11,7 +11,8 @@ class Inmueble extends Model
 
     protected $with = [
         'fotos',
-        'barrio'
+        'barrio',
+        'rolPersona'
     ];
 
     protected $fillable = [
@@ -34,5 +35,9 @@ class Inmueble extends Model
 
     public function fotos() {
         return $this->hasMany(Foto::class);
+    }
+
+    public function rolPersona() {
+        return $this->belongsTo(RolPersona::class);
     }
 }

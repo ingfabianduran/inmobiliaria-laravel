@@ -19,13 +19,14 @@ class CreateInmueblesTable extends Migration
             $table->double('costo');
             $table->smallInteger('numeroPisos');
             $table->integer('metrosCuadrados');
-            $table->foreignId('barrio_id');
             $table->longText('direccion');
             $table->smallInteger('numeroHabitaciones');
             $table->smallInteger('numeroBanios');
             $table->boolean('tieneSalaComedor');
             $table->boolean('tieneGaraje');
             $table->boolean('estaActivo');
+            $table->foreignId('barrio_id');
+            $table->foreignId('arrendador_id');
             $table->timestamps();
             $table->foreign('barrio_id')->references('id')->on('barrios');
         });
