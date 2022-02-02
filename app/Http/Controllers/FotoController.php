@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
 use App\Models\Inmueble;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-class InmuebleController extends Controller
+class FotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,7 @@ class InmuebleController extends Controller
      */
     public function index()
     {
-        $inmuebles = Inmueble::paginate(9);
-        return $inmuebles;
+        //
     }
 
     /**
@@ -36,10 +37,15 @@ class InmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        $inmueble = Inmueble::create($request->all());
+        $response = Cloudinary::upload($request->file('imagenes')->getRealPath())->getSecurePath();
+        $foto = new Foto();
+        $foto->url = $response;
+        $foto->inmueble_id = $request->inmueble_id;
+        $foto->save();
+        $inmueble = Inmueble::find($request->inmueble_id);
         return response()->json([
             'inmueble' => $inmueble,
-            'message' => 'Inmueble Creado Correctamente'
+            'message' => 'Imagen almacenada correctamente'
         ]);
     }
 
@@ -51,9 +57,9 @@ class InmuebleController extends Controller
      */
     public function show($id)
     {
-        $inmueble = Inmueble::find($id);
+        $foto = Foto::find($id);
         return response()->json([
-            'inmueble' => $inmueble
+            'foto' => $foto
         ]);
     }
 
@@ -77,12 +83,7 @@ class InmuebleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $inmueble = Inmueble::find($id);
-        $inmueble->update($request->all());
-        return response()->json([
-            'inmueble' => $inmueble,
-            'message' => 'Inmueble Actualizado Correctamente'
-        ]);
+        //
     }
 
     /**
@@ -93,6 +94,12 @@ class InmuebleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $foto = Foto::find($id);
+        $foto->delete();
+        $inmueble = Inmueble::find($foto->inmueble_id);
+        return response()->json([
+            'message' => 'Imagen eliminada correctamente',
+            'inmueble' => $inmueble
+        ]);
     }
 }
