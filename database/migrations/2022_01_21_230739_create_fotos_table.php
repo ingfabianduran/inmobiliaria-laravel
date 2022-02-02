@@ -16,6 +16,7 @@ class CreateFotosTable extends Migration
         Schema::create('fotos', function (Blueprint $table) {
             $table->id();
             $table->longText('url');
+            $table->longText('publicId');
             $table->foreignId('inmueble_id');
             $table->timestamps();
             $table->foreign('inmueble_id')->references('id')->on('inmuebles');

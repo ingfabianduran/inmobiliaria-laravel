@@ -15,6 +15,7 @@ class FotoFactory extends Factory
     {
         return [
             'url' => $this->faker->imageUrl(),
+            'publicId' => $this->faker->numberBetween(10000, 99999),
             'inmueble_id' => $this->faker->numberBetween(1, 100)
         ];
     }

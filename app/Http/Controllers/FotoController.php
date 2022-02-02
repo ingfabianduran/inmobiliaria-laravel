@@ -37,9 +37,12 @@ class FotoController extends Controller
      */
     public function store(Request $request)
     {
-        $response = Cloudinary::upload($request->file('imagenes')->getRealPath())->getSecurePath();
+        $response = Cloudinary::upload($request->file('imagenes')->getRealPath());
+        $url = $response->getSecurePath();
+        $publicId = $response->getPublicId();
         $foto = new Foto();
-        $foto->url = $response;
+        $foto->url = $url;
+        $foto->publicId = $publicId;
         $foto->inmueble_id = $request->inmueble_id;
         $foto->save();
         $inmueble = Inmueble::find($request->inmueble_id);
@@ -95,6 +98,7 @@ class FotoController extends Controller
     public function destroy($id)
     {
         $foto = Foto::find($id);
+        $deleteFileCloudinary = Cloudinary::destroy($foto->publicId);
         $foto->delete();
         $inmueble = Inmueble::find($foto->inmueble_id);
         return response()->json([
