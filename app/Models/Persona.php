@@ -9,11 +9,15 @@ class Persona extends Model
 {
     use HasFactory;
 
+    protected $with = [
+        'telefonos'
+    ];
+
     public function rolPersonas() {
         return $this->hasMany(RolPersona::class);
     }
 
     public function telefonos() {
-        return $this->hasMany(Persona::class);
+        return $this->hasMany(Telefono::class);
     }
 }

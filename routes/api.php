@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarrioController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\InmuebleController;
+use App\Http\Controllers\RolPersonaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::put('/inmuebles/{id}', [InmuebleController::class, 'update']);
 Route::get('/barrios/all', [BarrioController::class, 'index']);
 Route::post('/fotos/add', [FotoController::class, 'store']);
 Route::delete('/fotos/{id}', [FotoController::class, 'destroy']);
+Route::get('/rolesPersonas/{tipo}', [RolPersonaController::class, 'index']);

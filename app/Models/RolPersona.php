@@ -9,6 +9,10 @@ class RolPersona extends Model
 {
     use HasFactory;
 
+    protected $with = [
+        'persona'
+    ];
+
     public function persona() {
         return $this->belongsTo(Persona::class);
     }

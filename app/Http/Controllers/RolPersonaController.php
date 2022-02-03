@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inmueble;
+use App\Models\RolPersona;
 use Illuminate\Http\Request;
 
-class InmuebleController extends Controller
+class RolPersonaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($tipo)
     {
-        $inmuebles = Inmueble::paginate(10);
-        return $inmuebles;
+        $rolesPersonas = RolPersona::where('rol', '=', $tipo)->paginate(10);
+        return $rolesPersonas;
     }
 
     /**
@@ -36,11 +36,7 @@ class InmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        $inmueble = Inmueble::create($request->all());
-        return response()->json([
-            'inmueble' => $inmueble,
-            'message' => 'Inmueble Creado Correctamente'
-        ]);
+        //
     }
 
     /**
@@ -51,10 +47,7 @@ class InmuebleController extends Controller
      */
     public function show($id)
     {
-        $inmueble = Inmueble::find($id);
-        return response()->json([
-            'inmueble' => $inmueble
-        ]);
+        //
     }
 
     /**
@@ -77,12 +70,7 @@ class InmuebleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $inmueble = Inmueble::find($id);
-        $inmueble->update($request->all());
-        return response()->json([
-            'inmueble' => $inmueble,
-            'message' => 'Inmueble Actualizado Correctamente'
-        ]);
+        //
     }
 
     /**
