@@ -25,7 +25,7 @@ class InmuebleFactory extends Factory
             'tieneGaraje' => $this->faker->boolean,
             'estaActivo' => $this->faker->boolean,
             'barrio_id' => $this->faker->numberBetween(1, 50),
-            'arrendador_id' => $this->faker->numberBetween(1, 400),
+            'arrendador_id' => $this->faker->numberBetween(1, 200),
         ];
     }
 }

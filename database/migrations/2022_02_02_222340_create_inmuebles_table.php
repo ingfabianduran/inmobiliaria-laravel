@@ -29,6 +29,7 @@ class CreateInmueblesTable extends Migration
             $table->foreignId('arrendador_id');
             $table->timestamps();
             $table->foreign('barrio_id')->references('id')->on('barrios');
+            $table->foreign('arrendador_id')->references('id')->on('personas');
         });
     }
 

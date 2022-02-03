@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         Barrio::factory(50)->create();
         Persona::factory(200)->has(Telefono::factory()->count(2))->create();
-        RolPersona::factory(400)->create();
         Inmueble::factory(600)->has(Foto::factory()->count(8))->create();
+        RolPersona::factory(400)->create();
     }
 }
