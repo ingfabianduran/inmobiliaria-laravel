@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\BarrioController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\FraseController;
 use App\Http\Controllers\InmuebleController;
+use App\Http\Controllers\PersonajeController;
 use App\Http\Controllers\RolPersonaController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +28,8 @@ Route::get('/barrios/all', [BarrioController::class, 'index']);
 Route::post('/fotos/add', [FotoController::class, 'store']);
 Route::delete('/fotos/{id}', [FotoController::class, 'destroy']);
 Route::get('/rolesPersonas/{tipo}', [RolPersonaController::class, 'index']);
+
+Route::get('/personajes/all', [PersonajeController:: class, 'index']);
+Route::post('/personajes/add', [PersonajeController::class, 'store']);
+Route::put('/frases/{id}', [FraseController::class, 'update']);
+Route::post('/comentarios/add', [ComentarioController::class, 'store']);
