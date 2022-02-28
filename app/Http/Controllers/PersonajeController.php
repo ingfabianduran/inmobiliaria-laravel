@@ -68,7 +68,9 @@ class PersonajeController extends Controller
             $frase->personaje_id = $personaje->id;
             $frase->save();
         }
-        return $personaje;
+        return response()->json([
+            'message' => 'Personaje agregado correctamente'
+        ]);
     }
 
     /**
