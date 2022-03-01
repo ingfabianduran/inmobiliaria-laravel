@@ -16,7 +16,7 @@ class PersonajeController extends Controller
      */
     public function index()
     {
-        $personajes = Personaje::paginate(10);
+        $personajes = Personaje::orderBy('id', 'desc')->paginate(10);
         return $personajes;
     }
 
