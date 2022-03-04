@@ -70,6 +70,7 @@ class PersonajeController extends Controller
             $nota = new Nota();
             $nota->nota = $dataCalificacion;
             $nota->frase_id = $frase->id;
+            $nota->save();
         }
         return response()->json([
             'message' => 'Personaje agregado correctamente'
