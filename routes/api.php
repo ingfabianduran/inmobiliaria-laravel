@@ -3,8 +3,8 @@
 use App\Http\Controllers\BarrioController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FotoController;
-use App\Http\Controllers\FraseController;
 use App\Http\Controllers\InmuebleController;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\PersonajeController;
 use App\Http\Controllers\RolPersonaController;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +31,5 @@ Route::get('/rolesPersonas/{tipo}', [RolPersonaController::class, 'index']);
 
 Route::get('/personajes/all', [PersonajeController:: class, 'index']);
 Route::post('/personajes/add', [PersonajeController::class, 'store']);
-Route::put('/frases/{id}', [FraseController::class, 'update']);
+Route::post('/notas/add', [NotaController::class, 'store']);
 Route::post('/comentarios/add', [ComentarioController::class, 'store']);

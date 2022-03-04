@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFrasesTable extends Migration
+class CreateNotasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFrasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('frases', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->text('frase')->nullable(false);
-            $table->foreignId('personaje_id')->nullable(false);
+            $table->smallInteger('nota');
+            $table->foreignId('frase_id');
             $table->timestamps();
-            $table->foreign('personaje_id')->references('id')->on('personajes');
+            $table->foreign('frase_id')->references('id')->on('frases');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateFrasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('frases');
+        Schema::dropIfExists('notas');
     }
 }

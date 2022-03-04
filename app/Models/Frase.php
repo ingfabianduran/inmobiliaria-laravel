@@ -10,7 +10,8 @@ class Frase extends Model
     use HasFactory;
 
     protected $with = [
-        'comentarios'
+        'comentarios',
+        'notas'
     ];
 
     public function personaje() {
@@ -19,5 +20,9 @@ class Frase extends Model
 
     public function comentarios() {
         return $this->hasMany(Comentario::class);
+    }
+
+    public function notas() {
+        return $this->hasMany(Nota::class);
     }
 }

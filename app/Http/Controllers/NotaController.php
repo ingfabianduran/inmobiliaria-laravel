@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Frase;
+use App\Models\Nota;
 use Illuminate\Http\Request;
 
-class FraseController extends Controller
+class NotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,19 @@ class FraseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nota' => 'required|integer|between:0,5',
+            'frase_id' => 'required|integer'
+        ]);
+
+        $dataRequest = $request->request->all();
+        $nota = new Nota();
+        $nota->nota = $dataRequest['nota'];
+        $nota->frase_id = $dataRequest['frase_id'];
+        $nota->save();
+        return response()->json([
+            'message' => 'Nota registrada correctamente'
+        ]);
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Models\Comentario;
 use App\Models\Frase;
 use App\Models\Persona;
 use App\Models\Inmueble;
+use App\Models\Nota;
 use App\Models\Personaje;
 use App\Models\RolPersona;
 use App\Models\Telefono;
@@ -26,6 +27,6 @@ class DatabaseSeeder extends Seeder
         // Persona::factory(200)->has(Telefono::factory()->count(2))->create();
         // Inmueble::factory(600)->has(Foto::factory()->count(8))->create();
         // RolPersona::factory(400)->create();
-        Personaje::factory(50)->has(Frase::factory()->count(5)->has(Comentario::factory()->count(3)))->create();
+        Personaje::factory(50)->has(Frase::factory()->count(5)->has(Nota::factory()->count(5))->has(Comentario::factory()->count(3)))->create();
     }
 }

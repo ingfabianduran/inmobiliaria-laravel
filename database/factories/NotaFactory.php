@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FraseFactory extends Factory
+class NotaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,7 @@ class FraseFactory extends Factory
     public function definition()
     {
         return [
-            'frase' => $this->faker->sentence(),
+            'nota' => $this->faker->numberBetween(0, 5)
         ];
     }
 }
