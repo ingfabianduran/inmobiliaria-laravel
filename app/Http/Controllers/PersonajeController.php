@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frase;
+use App\Models\Nota;
 use App\Models\Personaje;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -64,9 +65,11 @@ class PersonajeController extends Controller
             $dataCalificacion = $item->calificacion;
             $frase = new Frase();
             $frase->frase = $dataFrase;
-            $frase->calificacion = $dataCalificacion;
             $frase->personaje_id = $personaje->id;
             $frase->save();
+            $nota = new Nota();
+            $nota->nota = $dataCalificacion;
+            $nota->frase_id = $frase->id;
         }
         return response()->json([
             'message' => 'Personaje agregado correctamente'
